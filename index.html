@@ -10,12 +10,6 @@
       margin:0; padding: 0;
       box-sizing: border-box;
     }
-    html,body,.container{
-      width: 100%; height: 100%;
-    }
-    .container{
-      position: relative;
-    }
     .needDrag{
       position: absolute;
       top: 100px; left: 100px;
@@ -23,12 +17,18 @@
       height: 250px;
       border: 1px solid #e0e0e0;
       box-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+      cursor: move;
     }
   </style>
 </head>
 <body>
-  <div class="container">
     <div class="needDrag"></div>
-  </div>
+
+  <script src="./zxx.drag.1.0.js"></script>
+  <script>
+    // let box = document.getElementsByClassName('container')[0]
+    let content = document.getElementsByClassName('needDrag')[0]
+    startDrag(content, content)
+  </script>
 </body>
 </html>
