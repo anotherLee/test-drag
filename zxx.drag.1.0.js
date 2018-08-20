@@ -11,7 +11,6 @@ var params = {
 //获取相关CSS属性
 var getCss = function(o,key){
 	let result = o.currentStyle? o.currentStyle[key] : document.defaultView.getComputedStyle(o,false)[key];
-	console.log('result', result)
 	return result
 };
 
@@ -37,6 +36,7 @@ var startDrag = function(bar, target, callback){
 		params.currentX = e.clientX;
 		params.currentY = e.clientY;
 	};
+
 	document.onmouseup = function(){
 		params.flag = false;	
 		if(getCss(target, "left") !== "auto"){
@@ -46,6 +46,7 @@ var startDrag = function(bar, target, callback){
 			params.top = getCss(target, "top");
 		}
 	};
+
 	document.onmousemove = function(event){
 		var e = event ? event: window.event;
 		if(params.flag){
