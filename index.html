@@ -24,11 +24,21 @@
 <body>
     <div class="needDrag"></div>
 
-  <script src="./zxx.drag.1.0.js"></script>
   <script>
-    // let box = document.getElementsByClassName('container')[0]
-    // let content = document.getElementsByClassName('needDrag')[0]
-    // startDrag(content, content)
+    let needDragDom = document.getElementsByClassName('needDrag')[0]
+    let positions = {
+      currentX: 0, // 按下鼠标直到松开时鼠标的clientX值
+      currentY: 0, // 按下鼠标直到松开时鼠标的clientY值
+      left: 0, // 被拖拽的dom的style的left值
+      top: 0,  // 被拖拽的dom的style的top值
+      flag: false // 鼠标是否按下移动
+    }
+    needDragDom.onmousedown = function(e) {
+      positions.flag = true // 可以拖拽
+      positions.currentX = e.clientX
+      positions.currentY = e.clientY
+      console.log('positions:', positions)
+    }
   </script>
 </body>
 </html>
