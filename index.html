@@ -10,7 +10,7 @@
       margin:0; padding: 0;
       box-sizing: border-box;
     }
-    .needDrag{
+    #needDrag{
       position: absolute;
       top: 100px; left: 100px;
       width: 300px;
@@ -22,10 +22,10 @@
   </style>
 </head>
 <body>
-    <div class="needDrag"></div>
+    <div id="needDrag"></div>
 
   <script>
-    let needDragDom = document.getElementsByClassName('needDrag')[0]
+    let needDragDom = document.getElementById('needDrag')
     let positions = {
       currentX: 0, // 按下鼠标直到松开时鼠标的clientX值
       currentY: 0, // 按下鼠标直到松开时鼠标的clientY值
@@ -43,7 +43,9 @@
       positions.flag = true // 可以拖拽
       positions.currentX = e.clientX
       positions.currentY = e.clientY
+      return false
     }
+
     document.onmousemove = function(e) {
       e.preventDefault()
       if (positions.flag) {
@@ -55,6 +57,7 @@
     }
     document.onmouseup = function() {
       positions.flag = false
+      console.log('mouseup 里的 positions.flag:', positions.flag)
       positions.left = needDragDom.style.left
       positions.top = needDragDom.style.top
     }
