@@ -44,16 +44,16 @@
       positions.currentX = e.clientX
       positions.currentY = e.clientY
     }
-    needDragDom.onmousemove = function(e) {
+    document.onmousemove = function(e) {
       e.preventDefault()
       if (positions.flag) {
         let nowX = e.clientX, nowY = e.clientY
         let distanceX = nowX - positions.currentX, distanceY = nowY - positions.currentY
-        e.target.style.left = parseFloat(positions.left) + distanceX + 'px'
-        e.target.style.top = parseFloat(positions.top) + distanceY + 'px'
+        needDragDom.style.left = parseFloat(positions.left) + distanceX + 'px'
+        needDragDom.style.top = parseFloat(positions.top) + distanceY + 'px'
       }
     }
-    needDragDom.onmouseup = function() {
+    document.onmouseup = function() {
       positions.flag = false
       positions.left = needDragDom.style.left
       positions.top = needDragDom.style.top
