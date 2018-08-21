@@ -52,10 +52,9 @@
         let nowX = e.clientX, nowY = e.clientY
         let distanceX = nowX - positions.currentX, distanceY = nowY - positions.currentY
         let actualX = parseFloat(positions.left) + distanceX, actualY = parseFloat(positions.top) + distanceY
-        needDragDom.style.left = actualX < 0 ? 0 : actualX + 'px'
-        needDragDom.style.top = actualY < 0 ? 0 : actualY + 'px'
-        // needDragDom.style.left = parseFloat(positions.left) + distanceX + 'px'
-        // needDragDom.style.top = parseFloat(positions.top) + distanceY + 'px'
+        let maxLeft = window.innerWidth - needDragDom.offsetWidth, maxTop = window.innerHeight - needDragDom.offsetHeight
+        needDragDom.style.left = actualX < 0 ? 0 : actualX > maxLeft ? maxLeft + 'px' : actualX + 'px'
+        needDragDom.style.top = actualY < 0 ? 0 : actualY > maxTop ? maxTop + 'px' : actualY + 'px'
       }
     }
     document.onmouseup = function() {
